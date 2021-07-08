@@ -136,20 +136,24 @@ void loop() {
     for(int j=0; j<8; j++){
       lc.setRow(0, j, digits[i][j]);
     }
+    delay(500);
   }
   for(int row=0; row<8 ; row++){
     for(int col=0; col<8; col++){
       lc.setLed(0,col,row,led[col][row]);
     }
   }
+  delay(500);
   for(int i=0; i<11 ; i++){
     for(int j=0; j<8; j++){
       lc.setRow(0, j, ~digits[i][j]);
     }
+    delay(500);
   }
   for(int row=0; row<8 ; row++){
     for(int col=0; col<8; col++){
       lc.setLed(0,col,row,!led[col][row]);
     }
   }
+  delay(500);
 }
