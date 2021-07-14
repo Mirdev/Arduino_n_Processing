@@ -36,10 +36,6 @@ void setup(){
 }
 
 void draw(){
-  arduino.digitalWrite(pin, Arduino.HIGH);
-  delay(1000);
-  arduino.digitalWrite(pin, Arduino.LOW);
-  delay(1000);
 }
 
 void mouseMoved(){
