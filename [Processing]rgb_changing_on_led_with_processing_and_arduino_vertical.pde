@@ -11,8 +11,6 @@ int g=5;
 int b=6;
 
 void setup(){
-  size(600, 400);
-  background(255);
   size(400,400);
   background(0);
   fill(255,0,0);
