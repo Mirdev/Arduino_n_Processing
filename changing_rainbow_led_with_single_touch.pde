@@ -8,6 +8,12 @@ int last_state = 0;
 int pins[3] = {REDPIN, GREENPIN, BLUEPIN};
 int count = 0;
 
+void setColor(int r, int g, int b){
+  analogWrite(REDPIN, r);
+  analogWrite(GREENPIN, g);
+  analogWrite(BLUEPIN, b);
+}
+
 void setup() {
   Serial.begin(9600);
   pinMode(TOUCH, INPUT);
