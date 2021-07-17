@@ -30,7 +30,7 @@ void loop() {
     if(++speed_value>255) speed_value=255;
     Serial.println(speed_value);
     setMotors(speed_value);
-    setBrightness(speed_value);
+    setBrightness(speed_value, 0);
   }
   else{
     if(--speed_value<0) speed_value = 0;
@@ -47,7 +47,8 @@ void setColor(bool r, int g, int b){
 }
 
 void setBrightness(int speed_value, bool acc=0){
-  acc?int s=-1:int s=1;
+  int s;
+  acc?s=-1:s=1;
   if(speed_value<86){
     setColor(0, 0, brightness+=s*3);
     if(speed_value>84) brightness = 255*acc;
