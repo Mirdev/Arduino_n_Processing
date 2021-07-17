@@ -13,7 +13,7 @@ int len_output_pins = sizeof(output_pins)/sizeof(int);
 int len_input_pins = sizeof(input_pins)/sizeof(int);
 
 int speed_value = 0;
-int brightness = -3;
+int brightness = 0;
 
 void setColor(bool, int, int);
 void setBrightness(int, bool);
@@ -26,7 +26,8 @@ void setup() {
 }
 
 void loop() {
-  if(digitalRead(TOUCH)){
+  int state = digitalRead(TOUCH);
+  if(state){
     if(++speed_value>255) speed_value=255;
     Serial.println(speed_value);
     setMotors(speed_value);
@@ -50,11 +51,14 @@ void setBrightness(int speed_value, bool acc=0){
   int s;
   acc?s=-1:s=1;
   if(speed_value<86){
-    setColor(0, 0, brightness+=s*3);
+    setColor(0, 0, brightness);
+    brightness+=s*3;
+    if(brightness<0) brightness=0;
     if(speed_value>84) brightness = 255*acc;
   }
   else if(speed_value<171){
-    setColor(0, brightness+=s*3, 0);
+    setColor(0, brightness, 0);
+    brightness+=s*3;
     if(speed_value>169) brightness = 255*acc;
   }
   else{
