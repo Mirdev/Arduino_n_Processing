@@ -7,7 +7,7 @@
 #define BPN 10
 #define TOUCH 2
 
-int output_pins[] = {MOTOR1_A, MOTOR1_B, MOTOR2_A. MOTOR2_B, RPN, GPN, BPN};
+int output_pins[] = {MOTOR1_A, MOTOR1_B, MOTOR2_A, MOTOR2_B, RPN, GPN, BPN};
 int input_pins[] = {TOUCH};
 int len_output_pins = sizeof(output_pins)/sizeof(int);
 int len_input_pins = sizeof(input_pins)/sizeof(int);
