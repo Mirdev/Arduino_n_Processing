@@ -6,6 +6,9 @@
 TM1637Display disp(CLK, DIO);
 
 void setup(){
+  //! @param brightness A number from 0 (lowes brightness) to 7 (highest brightness)
+  //! @param on Turn display on or off
+  //setBrightness(uint8_t brightness, bool on = true)
   disp.setBrightness(0);
 }
 
