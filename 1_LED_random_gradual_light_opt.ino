@@ -23,8 +23,8 @@ void gradation(int rgb[], int gd, int d){
   float d_rgb[3];
   for(int i=0; i<3; i++) d_rgb[i] = (rgb[i]-pre_rgb[i])/gd;
   for(int i=0; i<gd; i++){
-    for(int j=0; j<3; j++) analogWrite(pins[j], round(pre_rgb[j]));
     for(int j=0; j<3; j++) pre_rgb[j] += d_rgb[j];
+    for(int j=0; j<3; j++) analogWrite(pins[j], round(pre_rgb[j]));
     delay(1);
   }
   delay(d);
