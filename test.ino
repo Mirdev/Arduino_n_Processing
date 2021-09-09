@@ -1,38 +1,32 @@
 #include <LiquidCrystal_I2C.h>
 
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
 #define R 4
 #define G 5
 #define B 6
 #define BZ 7
-#define DR 8
-#define ST 9
 
 #define DT 2
 #define CLK 3
 #define SW 18
 #define NE 10
 
-#define STEP 200
-
-LiquidCrystal_I2C lcd(0x27, 16, 2);
-
-int output_pins[] = {R, G, B, BZ, DR, ST};
-int input_pins[] = {DT, CLK, SW, NE};
-
 bool pre_clk = 0;
 bool pre_sw = 0;
+
 unsigned long debounce = 0;
 
 int stack = 0;
 int pre_index = 0;
-bool pre_position = 0;
 int index = 0;
+bool pre_position = 0;
 bool index_position = 0;
 
 String menu[] = {" EXIT", " MOTOR TEST", " HEATING BED", " EMERGENCY SET"};
 int menu_size[] = {1, 4, 2, 2};
-
-float angle = 0;
+int output_pins[] = {R, G, B, BZ};
+int input_pins[] = {DT, CLK, SW, NE};
 
 void display_menu(String str1, String str2){
   lcd.clear();
@@ -63,7 +57,7 @@ void update_menu(){
           update_menu();
           break;
         case 1:
-          display_menu(String(" ANGLE:")+angle<0?””:”+”+angle, " RETURN");
+          display_menu(" ANGLE:", " RETURN");
           break;
         case 2:
           display_menu(" HEATING:", " RETURN");
@@ -78,10 +72,6 @@ void update_menu(){
         case 0:
           switch(pre_index){
             case 1:
-              break;
-            case 2:
-              break;
-            case 3:
               break;
           }
           break;
